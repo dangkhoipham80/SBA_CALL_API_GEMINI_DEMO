@@ -16,6 +16,7 @@ Spring Boot demo gọi **Google Gemini Flash 2.5 API**, hỗ trợ chat nhiều 
 | Lombok                      | (managed by Boot) |
 | JaCoCo                      | 0.8.12            |
 | Spring Boot DevTools        | (managed by Boot) |
+| Docker                      | 20+               |
 
 ---
 
@@ -79,7 +80,27 @@ src/
             ├── ChatServiceImplTest.java    # Mockito unit test
             └── GeminiServiceImplTest.java
 ```
-<img width="1113" height="585" alt="image" src="https://github.com/user-attachments/assets/6a2085cc-8f62-4b26-9be2-529f0e24165b" />
+
+---
+
+## Cài đặt & chạy
+
+### 1. Yêu cầu
+
+- Java 21+
+- Maven 3.9+
+- Gemini API Key<img width="1113" height="585" alt="image" src="https://github.com/user-attachmen
+
+---
+
+## Cài đặt & chạy
+
+### 1. Yêu cầu
+
+- Java 21+
+- Maven 3.9+
+- Gemini API Keyts/assets/6a2085cc-8f62-4b26-9be2-529f0e24165b" />
+
 ---
 
 ## Cài đặt & chạy
@@ -112,6 +133,28 @@ java -jar target/sba-call-api-gemini-demo-0.0.1-SNAPSHOT.jar
 ```
 
 App mặc định chạy tại: **http://localhost:8080**
+
+### 5. Chạy với Docker
+
+```bash
+# Build image
+docker build -t gemini-demo .
+
+# Chạy container
+docker run -p 8080:8080 -e GEMINI_API_KEY=your_real_key gemini-demo
+```
+
+> Không cần cài Java hay Maven trên máy — mọi thứ đã được đóng gói trong image.
+
+Truyền thêm biến tuỳ chọn:
+
+```bash
+docker run -p 8080:8080 \
+  -e GEMINI_API_KEY=your_real_key \
+  -e GEMINI_MODEL=gemini-2.5-flash \
+  -e DEMO_STARTUP_CALL_ENABLED=false \
+  gemini-demo
+```
 
 ### 4. Auto reload (DevTools)
 
@@ -245,9 +288,9 @@ target/site/jacoco/index.html
 ```
 
 ### Coverage thresholds (JaCoCo)
+
 <img width="882" height="224" alt="image" src="https://github.com/user-attachments/assets/be00f974-180e-4731-b5d9-b36d8356ada2" />
 <img width="811" height="163" alt="image" src="https://github.com/user-attachments/assets/3eb6a748-79f8-4188-8b4c-6e2b7c36d409" />
-
 
 Các class được **loại trừ** khỏi coverage check (boilerplate/infra):
 
