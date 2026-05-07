@@ -79,7 +79,7 @@ src/
             ├── ChatServiceImplTest.java    # Mockito unit test
             └── GeminiServiceImplTest.java
 ```
-
+<img width="1113" height="585" alt="image" src="https://github.com/user-attachments/assets/6a2085cc-8f62-4b26-9be2-529f0e24165b" />
 ---
 
 ## Cài đặt & chạy
@@ -245,6 +245,9 @@ target/site/jacoco/index.html
 ```
 
 ### Coverage thresholds (JaCoCo)
+<img width="882" height="224" alt="image" src="https://github.com/user-attachments/assets/be00f974-180e-4731-b5d9-b36d8356ada2" />
+<img width="811" height="163" alt="image" src="https://github.com/user-attachments/assets/3eb6a748-79f8-4188-8b4c-6e2b7c36d409" />
+
 
 Các class được **loại trừ** khỏi coverage check (boilerplate/infra):
 
