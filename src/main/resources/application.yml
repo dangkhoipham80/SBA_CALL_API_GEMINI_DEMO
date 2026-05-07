@@ -3,6 +3,11 @@ spring:
     name: SBA_CALL_API_GEMINI_DEMO
   config:
     import: optional:file:.env[.properties]
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
 
 server:
   port: 8080
