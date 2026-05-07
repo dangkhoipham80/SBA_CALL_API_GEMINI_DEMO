@@ -5,7 +5,14 @@ spring:
     import: optional:file:.env[.properties]
 
 server:
-  port: 8099
+  port: 8080
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    enabled: true
 
 gemini:
   api-key: ${GEMINI_API_KEY:}

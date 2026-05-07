@@ -16,7 +16,7 @@ Demo Spring Boot app nho gon de call Gemini Flash 2.5, theo layering:
 2. Sua file `.env` va dien `GEMINI_API_KEY` that.
 3. Run class `SbaCallApiGeminiDemoApplication`.
 
-App mac dinh chay port `8099`.
+App mac dinh chay port `8080`.
 
 ## API demo
 
