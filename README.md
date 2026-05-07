@@ -99,7 +99,7 @@ src/
 
 - Java 21+
 - Maven 3.9+
-- Gemini API Keyts/assets/6a2085cc-8f62-4b26-9be2-529f0e24165b" />
+- Gemini API Key
 
 ---
 
