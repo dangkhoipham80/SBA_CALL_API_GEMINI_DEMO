@@ -89,7 +89,7 @@ src/
 
 - Java 21+
 - Maven 3.9+
-- Gemini API Key<img width="1113" height="585" alt="image" src="https://github.com/user-attachmen
+- Gemini API Key
 
 ---
 
