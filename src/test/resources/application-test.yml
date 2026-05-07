@@ -1,0 +1,8 @@
+gemini:
+  api-key: test-key
+  model: gemini-2.5-flash
+  base-url: https://generativelanguage.googleapis.com
+  timeout-seconds: 30
+
+demo:
+  startup-call-enabled: false

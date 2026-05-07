@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: SBA_CALL_API_GEMINI_DEMO
+  config:
+    import: optional:file:.env[.properties]
+
+server:
+  port: 8099
+
+gemini:
+  api-key: ${GEMINI_API_KEY:}
+  model: ${GEMINI_MODEL:gemini-2.5-flash}
+  base-url: ${GEMINI_BASE_URL:https://generativelanguage.googleapis.com}
+  timeout-seconds: ${GEMINI_TIMEOUT_SECONDS:60}
+
+demo:
+  startup-call-enabled: ${DEMO_STARTUP_CALL_ENABLED:true}

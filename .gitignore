@@ -1,0 +1,62 @@
+*.env
+
+# Maven
+target/
+*.jar
+*.war
+*.nar
+*.ear
+*.zip
+*.tar.gz
+*.rar
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.bak
+release.properties
+dependency-reduced-pom.xml
+buildNumber.properties
+.mvn/timing.properties
+.mvn/wrapper/maven-wrapper.jar
+
+# IDE
+.idea/
+.vscode/
+.classpath
+.project
+.settings/
+.DS_Store
+*.swp
+*.swo
+*~
+.gradle/
+build/
+.factorypath
+
+# Compiled
+*.class
+*.pyc
+
+# Logs
+*.log
+logs/
+log.txt
+
+# System
+Thumbs.db
+.AppleDouble
+.LSOverride
+*.sublime-workspace
+
+# IntelliJ
+out/
+*.iml
+*.iws
+*.ipr
+
+# Spring Boot
+.springBeans
+
+# Misc
+*.bak
+*.tmp

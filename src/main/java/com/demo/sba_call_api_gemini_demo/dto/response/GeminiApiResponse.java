@@ -1,0 +1,27 @@
+package com.demo.sba_call_api_gemini_demo.dto.response;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
+public record GeminiApiResponse(List<Candidate> candidates) {
+  public String firstText() {
+    if (candidates == null || candidates.isEmpty()) {
+      return null;
+    }
+    Content content = candidates.getFirst().content();
+    if (content == null || content.parts() == null || content.parts().isEmpty()) {
+      return null;
+    }
+    return content.parts().getFirst().text();
+  }
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public record Candidate(Content content) {}
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public record Content(List<Part> parts) {}
+
+  @JsonIgnoreProperties(ignoreUnknown = true)
+  public record Part(String text) {}
+}
