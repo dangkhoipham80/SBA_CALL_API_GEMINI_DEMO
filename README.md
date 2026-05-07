@@ -81,15 +81,6 @@ src/
             └── GeminiServiceImplTest.java
 ```
 
----
-
-## Cài đặt & chạy
-
-### 1. Yêu cầu
-
-- Java 21+
-- Maven 3.9+
-- Gemini API Key
 
 ---
 
