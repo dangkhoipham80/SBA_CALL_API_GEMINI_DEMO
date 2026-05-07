@@ -291,7 +291,7 @@ target/site/jacoco/index.html
 ### Coverage thresholds (JaCoCo)
 
 <img width="882" height="224" alt="image" src="https://github.com/user-attachments/assets/be00f974-180e-4731-b5d9-b36d8356ada2" />
-<img width="811" height="163" alt="image" src="https://github.com/user-attachments/assets/3eb6a748-79f8-4188-8b4c-6e2b7c36d409" />
+<img width="890" height="178" alt="image" src="https://github.com/user-attachments/assets/c00b4f5c-a6eb-44a6-b29d-cc4f63712010" />
 
 Các class được **loại trừ** khỏi coverage check (boilerplate/infra):
 
