@@ -1,11 +1,12 @@
 package com.demo.sba_call_api_gemini_demo.service;
 
+import java.util.List;
+
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatCreateRequest;
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatMessageRequest;
 import com.demo.sba_call_api_gemini_demo.dto.response.ChatMessageResponse;
 import com.demo.sba_call_api_gemini_demo.dto.response.ChatSessionResponse;
 import com.demo.sba_call_api_gemini_demo.dto.response.ChatTurnResponse;
-import java.util.List;
 
 public interface ChatService {
   ChatSessionResponse createSession(ChatCreateRequest request);

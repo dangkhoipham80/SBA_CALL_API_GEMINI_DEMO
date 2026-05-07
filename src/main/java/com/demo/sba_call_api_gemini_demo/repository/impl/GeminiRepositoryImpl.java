@@ -1,5 +1,13 @@
 package com.demo.sba_call_api_gemini_demo.repository.impl;
 
+import java.util.List;
+import java.util.Objects;
+
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.MediaType;
+import org.springframework.stereotype.Repository;
+import org.springframework.web.client.RestClient;
+
 import com.demo.sba_call_api_gemini_demo.config.GeminiProperties;
 import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest;
 import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest.Content;
@@ -8,14 +16,8 @@ import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest.Part;
 import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest.SafetySetting;
 import com.demo.sba_call_api_gemini_demo.dto.response.GeminiApiResponse;
 import com.demo.sba_call_api_gemini_demo.repository.GeminiRepository;
-import java.util.List;
-import java.util.Objects;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.http.MediaType;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.client.RestClient;
 
 @Repository
 @RequiredArgsConstructor

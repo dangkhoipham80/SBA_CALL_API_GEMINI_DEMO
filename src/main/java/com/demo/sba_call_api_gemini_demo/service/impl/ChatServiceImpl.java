@@ -1,5 +1,10 @@
 package com.demo.sba_call_api_gemini_demo.service.impl;
 
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatCreateRequest;
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatMessageRequest;
 import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest;
@@ -11,11 +16,9 @@ import com.demo.sba_call_api_gemini_demo.entity.ChatSession;
 import com.demo.sba_call_api_gemini_demo.repository.ChatMessageRepository;
 import com.demo.sba_call_api_gemini_demo.repository.ChatSessionRepository;
 import com.demo.sba_call_api_gemini_demo.repository.GeminiRepository;
+
 import jakarta.persistence.EntityNotFoundException;
-import java.util.List;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
