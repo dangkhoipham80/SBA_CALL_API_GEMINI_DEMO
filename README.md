@@ -251,6 +251,7 @@ Sau khi chạy app, truy cập:
 
 - **Swagger UI**: http://localhost:8080/swagger-ui.html
 - **OpenAPI JSON**: http://localhost:8080/v3/api-docs
+<img width="1087" height="583" alt="image" src="https://github.com/user-attachments/assets/808386d9-4e97-4e44-bcd4-8f27892845bc" />
 
 ---
 
