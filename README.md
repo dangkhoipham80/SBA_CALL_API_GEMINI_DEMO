@@ -90,16 +90,6 @@ src/
 
 - Java 21+
 - Maven 3.9+
-- Gemini API Key
-
----
-
-## Cài đặt & chạy
-
-### 1. Yêu cầu
-
-- Java 21+
-- Maven 3.9+
 - Gemini API Key (lấy tại https://aistudio.google.com/apikey)
 
 ### 2. Cấu hình API Key
