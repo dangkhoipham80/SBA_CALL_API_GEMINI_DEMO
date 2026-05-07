@@ -1,14 +1,23 @@
 package com.demo.sba_call_api_gemini_demo.service.impl;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.ArgumentMatchers.anyLong;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
+
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 import com.demo.sba_call_api_gemini_demo.BaseUnitTest;
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatCreateRequest;
 import com.demo.sba_call_api_gemini_demo.dto.request.ChatMessageRequest;
-import com.demo.sba_call_api_gemini_demo.dto.request.GeminiApiRequest;
 import com.demo.sba_call_api_gemini_demo.dto.response.ChatSessionResponse;
 import com.demo.sba_call_api_gemini_demo.dto.response.ChatTurnResponse;
 import com.demo.sba_call_api_gemini_demo.entity.ChatMessage;
@@ -16,13 +25,8 @@ import com.demo.sba_call_api_gemini_demo.entity.ChatSession;
 import com.demo.sba_call_api_gemini_demo.repository.ChatMessageRepository;
 import com.demo.sba_call_api_gemini_demo.repository.ChatSessionRepository;
 import com.demo.sba_call_api_gemini_demo.repository.GeminiRepository;
+
 import jakarta.persistence.EntityNotFoundException;
-import java.time.LocalDateTime;
-import java.util.List;
-import java.util.Optional;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 class ChatServiceImplTest extends BaseUnitTest {
 

@@ -100,6 +100,7 @@
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <!-- Không exclude ở đây — agent phải instrument tất cả -->
                     </execution>
                     <execution>
                         <id>report</id>
@@ -107,6 +108,16 @@
                         <goals>
                             <goal>report</goal>
                         </goals>
+                        <configuration>
+                            <!-- Loại trừ boilerplate/infra khỏi report -->
+                            <excludes>
+                                <exclude>com/demo/**/SbaCallApiGeminiDemoApplication.class</exclude>
+                                <exclude>com/demo/**/config/**</exclude>
+                                <exclude>com/demo/**/entity/**</exclude>
+                                <exclude>com/demo/**/demo/**</exclude>
+                                <exclude>com/demo/**/repository/impl/GeminiRepositoryImpl.class</exclude>
+                            </excludes>
+                        </configuration>
                     </execution>
                     <execution>
                         <id>check</id>
@@ -115,14 +126,43 @@
                             <goal>check</goal>
                         </goals>
                         <configuration>
+                            <!-- Loại trừ boilerplate/infra khỏi coverage check -->
+                            <excludes>
+                                <exclude>com/demo/**/SbaCallApiGeminiDemoApplication.class</exclude>
+                                <exclude>com/demo/**/config/**</exclude>
+                                <exclude>com/demo/**/entity/**</exclude>
+                                <exclude>com/demo/**/demo/**</exclude>
+                                <exclude>com/demo/**/repository/impl/GeminiRepositoryImpl.class</exclude>
+                            </excludes>
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
                                     <limits>
+                                        <!-- Line coverage tối thiểu 70% -->
                                         <limit>
                                             <counter>LINE</counter>
                                             <value>COVEREDRATIO</value>
-                                            <minimum>0.30</minimum>
+                                            <minimum>0.70</minimum>
+                                        </limit>
+                                        <!-- Branch coverage tối thiểu 60% -->
+                                        <limit>
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.60</minimum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                                <!-- Kiểm tra từng class quan trọng -->
+                                <rule>
+                                    <element>CLASS</element>
+                                    <excludes>
+                                        <exclude>com.demo.*.dto.*</exclude>
+                                    </excludes>
+                                    <limits>
+                                        <limit>
+                                            <counter>LINE</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.50</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
