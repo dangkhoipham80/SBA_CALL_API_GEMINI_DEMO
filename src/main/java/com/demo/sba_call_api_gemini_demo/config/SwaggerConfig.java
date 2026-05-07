@@ -18,7 +18,7 @@ public class SwaggerConfig {
             .version("1.0.0")
             .description("Spring Boot app to demo Gemini Flash 2.5 API call")
             .contact(new Contact()
-                .name("Demo")
-                .url("https://github.com")));
+                .name("Github Repository")
+                .url("https://github.com/dangkhoipham80/SBA_CALL_API_GEMINI_DEMO")));
   }
 }

@@ -63,4 +63,43 @@ public class GeminiRepositoryImpl implements GeminiRepository {
     }
     return response.firstText();
   }
+
+  @Override
+  public String generateContent(List<GeminiApiRequest.Content> contents) {
+    GeminiApiRequest request =
+        GeminiApiRequest.builder()
+            .contents(contents)
+            .generationConfig(GenerationConfig.builder().temperature(0.7).maxOutputTokens(2048).build())
+            .safetySettings(
+                List.of(
+                    SafetySetting.builder()
+                        .category("HARM_CATEGORY_HARASSMENT")
+                        .threshold("BLOCK_NONE")
+                        .build(),
+                    SafetySetting.builder()
+                        .category("HARM_CATEGORY_HATE_SPEECH")
+                        .threshold("BLOCK_NONE")
+                        .build()))
+            .build();
+
+    String uri =
+        "/v1beta/models/"
+            + geminiProperties.getModel()
+            + ":generateContent?key="
+            + geminiProperties.getApiKey();
+
+    GeminiApiResponse response =
+        geminiRestClient
+            .post()
+            .uri(uri)
+            .contentType(MediaType.APPLICATION_JSON)
+            .body(request)
+            .retrieve()
+            .body(GeminiApiResponse.class);
+
+    if (response == null || response.firstText() == null || Objects.requireNonNull(response.firstText()).isBlank()) {
+      throw new IllegalStateException("Gemini returned empty answer");
+    }
+    return response.firstText();
+  }
 }
