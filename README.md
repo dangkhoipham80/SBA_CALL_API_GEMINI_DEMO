@@ -6,16 +6,16 @@ Spring Boot demo gọi **Google Gemini Flash 2.5 API**, hỗ trợ chat nhiều 
 
 ## Tech Stack
 
-| Thành phần | Version |
-|---|---|
-| Java | 21 |
-| Spring Boot | 3.5.0 |
-| Spring Data JPA | (managed by Boot) |
-| H2 Database | (managed by Boot) |
-| SpringDoc OpenAPI (Swagger) | 2.8.6 |
-| Lombok | (managed by Boot) |
-| JaCoCo | 0.8.12 |
-| Spring Boot DevTools | (managed by Boot) |
+| Thành phần                  | Version           |
+| --------------------------- | ----------------- |
+| Java                        | 21                |
+| Spring Boot                 | 3.5.0             |
+| Spring Data JPA             | (managed by Boot) |
+| H2 Database                 | (managed by Boot) |
+| SpringDoc OpenAPI (Swagger) | 2.8.6             |
+| Lombok                      | (managed by Boot) |
+| JaCoCo                      | 0.8.12            |
+| Spring Boot DevTools        | (managed by Boot) |
 
 ---
 
@@ -123,14 +123,15 @@ Khi đang chạy `mvn spring-boot:run`, mỗi lần **build lại** (Ctrl+F9 tro
 
 ### Gemini Generate
 
-| Method | URL | Mô tả |
-|---|---|---|
-| `GET` | `/api/v1/gemini/health` | Health check |
+| Method | URL                       | Mô tả                                |
+| ------ | ------------------------- | ------------------------------------ |
+| `GET`  | `/api/v1/gemini/health`   | Health check                         |
 | `POST` | `/api/v1/gemini/generate` | Gọi Gemini 1 lần (không lưu lịch sử) |
 
 **POST /api/v1/gemini/generate**
 
 Request:
+
 ```json
 {
   "prompt": "Giải thích định lý Pythagore ngắn gọn"
@@ -138,6 +139,7 @@ Request:
 ```
 
 Response:
+
 ```json
 {
   "code": 1000,
@@ -153,32 +155,45 @@ Response:
 
 ### Chat (Multi-turn, lưu lịch sử)
 
-| Method | URL | Mô tả |
-|---|---|---|
-| `POST` | `/api/v1/chat/sessions` | Tạo session chat mới |
-| `GET` | `/api/v1/chat/sessions` | Danh sách tất cả sessions |
+| Method | URL                                   | Mô tả                       |
+| ------ | ------------------------------------- | --------------------------- |
+| `POST` | `/api/v1/chat/sessions`               | Tạo session chat mới        |
+| `GET`  | `/api/v1/chat/sessions`               | Danh sách tất cả sessions   |
 | `POST` | `/api/v1/chat/sessions/{id}/messages` | Gửi tin nhắn, nhận phản hồi |
-| `GET` | `/api/v1/chat/sessions/{id}/messages` | Xem toàn bộ lịch sử chat |
+| `GET`  | `/api/v1/chat/sessions/{id}/messages` | Xem toàn bộ lịch sử chat    |
 
 **Ví dụ tạo session:**
+
 ```json
 POST /api/v1/chat/sessions
 { "title": "Học Toán" }
 ```
 
 **Ví dụ gửi tin nhắn:**
+
 ```json
 POST /api/v1/chat/sessions/1/messages
 { "message": "Pythagore là gì?" }
 ```
 
 Response:
+
 ```json
 {
   "code": 1000,
   "result": {
-    "userMessage": { "id": 1, "role": "user", "content": "Pythagore là gì?", "createdAt": "..." },
-    "botReply":    { "id": 2, "role": "model", "content": "Đây là định lý...", "createdAt": "..." }
+    "userMessage": {
+      "id": 1,
+      "role": "user",
+      "content": "Pythagore là gì?",
+      "createdAt": "..."
+    },
+    "botReply": {
+      "id": 2,
+      "role": "model",
+      "content": "Đây là định lý...",
+      "createdAt": "..."
+    }
   }
 }
 ```
@@ -203,7 +218,7 @@ Xem dữ liệu trong database trực tiếp:
 - **URL**: http://localhost:8080/h2-console
 - **JDBC URL**: `jdbc:h2:mem:chatdb`
 - **Username**: `sa`
-- **Password**: *(để trống)*
+- **Password**: _(để trống)_
 
 > Database là in-memory, mất toàn bộ dữ liệu khi restart app.
 
@@ -232,6 +247,7 @@ target/site/jacoco/index.html
 ### Coverage thresholds (JaCoCo)
 
 Các class được **loại trừ** khỏi coverage check (boilerplate/infra):
+
 - `SbaCallApiGeminiDemoApplication` — main class
 - `config/**` — Spring configuration beans
 - `entity/**` — JPA entities
@@ -240,30 +256,30 @@ Các class được **loại trừ** khỏi coverage check (boilerplate/infra):
 
 Thresholds áp dụng cho phần còn lại (controller, service, dto, exception):
 
-| Metric | Minimum |
-|---|---|
-| Line coverage (bundle) | **70%** |
-| Branch coverage (bundle) | **60%** |
+| Metric                    | Minimum |
+| ------------------------- | ------- |
+| Line coverage (bundle)    | **70%** |
+| Branch coverage (bundle)  | **60%** |
 | Line coverage (mỗi class) | **50%** |
 
 ### Danh sách test hiện tại (18 tests)
 
-| Class | Tests | Loại |
-|---|---|---|
-| `ChatControllerTest` | 6 | `@WebMvcTest` + MockMvc |
-| `ChatServiceImplTest` | 7 | Mockito unit test |
-| `GeminiDemoControllerTest` | 2 | `@WebMvcTest` + MockMvc |
-| `GeminiApiResponseTest` | 2 | Unit test |
-| `GeminiServiceImplTest` | 1 | Mockito unit test |
+| Class                      | Tests | Loại                    |
+| -------------------------- | ----- | ----------------------- |
+| `ChatControllerTest`       | 6     | `@WebMvcTest` + MockMvc |
+| `ChatServiceImplTest`      | 7     | Mockito unit test       |
+| `GeminiDemoControllerTest` | 2     | `@WebMvcTest` + MockMvc |
+| `GeminiApiResponseTest`    | 2     | Unit test               |
+| `GeminiServiceImplTest`    | 1     | Mockito unit test       |
 
 ---
 
 ## Biến môi trường
 
-| Biến | Bắt buộc | Default | Mô tả |
-|---|---|---|---|
-| `GEMINI_API_KEY` | ✅ | — | API key từ Google AI Studio |
-| `GEMINI_MODEL` | ❌ | `gemini-2.5-flash` | Model Gemini sử dụng |
-| `GEMINI_BASE_URL` | ❌ | `https://generativelanguage.googleapis.com` | Base URL Gemini API |
-| `GEMINI_TIMEOUT_SECONDS` | ❌ | `60` | Timeout HTTP request (giây) |
-| `DEMO_STARTUP_CALL_ENABLED` | ❌ | `true` | Tắt/bật gọi Gemini lúc startup |
+| Biến                        | Bắt buộc | Default                                     | Mô tả                          |
+| --------------------------- | -------- | ------------------------------------------- | ------------------------------ |
+| `GEMINI_API_KEY`            | ✅       | —                                           | API key từ Google AI Studio    |
+| `GEMINI_MODEL`              | ❌       | `gemini-2.5-flash`                          | Model Gemini sử dụng           |
+| `GEMINI_BASE_URL`           | ❌       | `https://generativelanguage.googleapis.com` | Base URL Gemini API            |
+| `GEMINI_TIMEOUT_SECONDS`    | ❌       | `60`                                        | Timeout HTTP request (giây)    |
+| `DEMO_STARTUP_CALL_ENABLED` | ❌       | `true`                                      | Tắt/bật gọi Gemini lúc startup |
